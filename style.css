@@ -1,0 +1,44 @@
+/* CONTAINER ALIGNMENT */
+#content{
+  max-width: 1020px;
+  margin: 60px auto 0;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+#content #album-container{
+  width: 280px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#content #track-container{
+  max-width: 700px;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+}
+
+/* TRACK LIST TABLE */
+#track-list{
+  position: relative;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#track-list th{
+  text-align: left;
+  padding: 0 5px 20px;
+}
+
+#track-list td{
+  padding: 10px 5px;
+}
+
+#track-list .position{
+  width: 20px;
+}
+
+#track-list .duration{
+  text-align: right;
+}
