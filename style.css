@@ -1,8 +1,18 @@
 /* CONTAINER ALIGNMENT */
+body{
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 12pt;
+  color: #333;
+  background-color: #e4ebea;
+}
+
+.hidden{
+  display: none;
+}
+
 #content{
   max-width: 1020px;
   margin: 60px auto 0;
-  font-family: 'Open Sans', Arial, sans-serif;
 }
 
 #content #album-container{
@@ -19,11 +29,41 @@
   position: absolute;
 }
 
+/* ALBUM INFO */
+#album-info #album-name{
+  font-size: 14pt;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+#album-info #album-artist{
+  font-size: 14pt;
+  margin-bottom: 20px;
+}
+
+#album-info #album-artist a{
+  text-decoration: none;
+  color: #20486c;
+}
+#album-info #album-artist a:hover{
+  color: #4090d8;
+}
+
+#album-info #release-date, #album-info #record-label{
+  font-size: 10pt;
+}
+
 /* TRACK LIST TABLE */
 #track-list{
   position: relative;
   width: 100%;
   table-layout: fixed;
+  border-collapse: collapse;
+}
+
+#track-list tr + tr:hover{
+  background-color: #77d4cd;
+  cursor: pointer;
 }
 
 #track-list th{

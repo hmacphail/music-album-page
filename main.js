@@ -1,6 +1,6 @@
 //static global vars
 var ALBUM_URL = "https://musicbrainz.org/ws/2/release/3611e54a-1a2a-4fdf-af78-287b845e5ebb?inc=aliases%2Bartist-credits%2Bdiscids%2Blabels%2Brecordings";
-var COVER_ART = "Eureka.jpg";
+var COVER_ART = "content/Eureka.jpg";
 
 //on load
 $.get(ALBUM_URL, function(data) {
@@ -22,9 +22,11 @@ function parseAlbumXml(dataXml){
   //display album data
   var albumInfoDiv = $("#album-info");
   albumInfoDiv.append("<div id='album-name'>" + album + "</div>")
-    .append("<div id='album-artist'>" + artist + "</div>")
+    .append("<div id='album-artist'><a href='#'>" + artist + "</a></div>")
     .append("<div id='release-date'>" + date.toLocaleDateString("en-US", dateOptions) + "</div>")
     .append("<div id='record-label'>" + label + "</div>");
+
+  document.title = album + " by " + artist;
 
   //track list
   var tracksArray = dataXml.find("track-list track");
@@ -41,11 +43,24 @@ function parseAlbumXml(dataXml){
 
     //display each track
     var trackRow = "<tr>"
-      + "<td class='position'>" + position + "</td>"
+      + "<td class='position'>"
+        + "<span class='number'>" + position + "</span>"
+        + "<span class='icomoon icon-play hidden'></span>"
+      + "</td>"
       + "<td>" + title + "</td>"
       + "<td>" + artist + "</td>"
       + "<td class='duration'>" + min + ":" + sec + "</td>"
       + "</tr>";
     $("#track-list tbody").append(trackRow);
   }
+
+  //show play icon on hover
+  $("#track-list tr + tr")
+    .mouseover(function() {
+      $(this).find(".number").addClass("hidden");
+      $(this).find(".icon-play").removeClass("hidden");
+    }).mouseout(function() {
+      $(this).find(".number").removeClass("hidden");
+      $(this).find(".icon-play").addClass("hidden");
+    });
 }
